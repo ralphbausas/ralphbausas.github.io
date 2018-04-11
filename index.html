@@ -1,1 +1,340 @@
-Hello World
+<html>
+
+<head>
+
+  <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+  <style>
+  ul.tabs > .indicator{
+    background-color: #d500f9;
+  }
+  </style>
+
+</head>
+
+<body class="grey lighten-3">
+  <nav>
+    <div class="nav-wrapper purple darken-1">
+      <a href="#" class="brand-logo left">Grubby</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="menu.html">Menu</a></li>
+        <!-- <li><a href="#" data-activates="slide-out" class="button-profile">User</a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="profile-container">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card small">
+          <div class="card-image">
+            <img src="images/profile-banner.jpg" class="responsive-img">
+          </div>
+          <div class="card-content">
+            <div class="row">
+              <div class="col s2">
+                <img class="profile-avatar" src="images/profile.jpg">
+              </div>
+              <div class="col s3 text-left">
+                <h5>Ralph Bausas</h5>
+                <h6 class="grey-text">Professional Eater</h6>
+              </div>
+              <div class="col s2">
+                <h5>22</h5>
+                <h6 class="grey-text">Age</h6>
+              </div>
+              <div class="col s2">
+                <h5>1</h5>
+                <h6 class="grey-text">Favorites</h6>
+              </div>
+              <div class="col s3">
+                <h5>15</h5>
+                <h6 class="grey-text">Orders</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!--Left side-->
+    <div class="col s12 m3">
+      <div class="card purple">
+        <div class="card-content white-text">
+          <span class="card-title">About me!</span><div class="right-align" style="cursor: pointer"><i id="btn-edit-about" class="tiny material-icons">edit</i></div>
+          <p id="about-text">I'm a simple man. I see food, I press heart.</p>
+        </div>
+      </div>
+
+      <div class="card white darken-4">
+        <div class="card-content black-text">
+          <span class="card-title">Recent Orders</span>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <ul class="collection">
+              <li class="order_history collection-item avatar">
+                <i class="circle"><strong>F</strong></i>
+                <span class="title">The Fishnet</span>
+                <p>
+                  ₱2,949.00
+                </p>
+              </li>
+              <li class="order_history collection-item avatar">
+                <i class="circle"><strong>F</strong></i>
+                <span class="title">The Fishnet</span>
+                <p>
+                  ₱249.00
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Left side-->
+
+    <!--Right side-->
+    <div class="col s12 m9">
+      <div class="card">
+        <!-- <div class="card-content">
+             <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+           </div> -->
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a class="active purple-text -darken-4" href="#favorites_tab">Favorites</a></li>
+            <li class="tab"><a class="purple-text -darken-4" href="#test5">Test 2</a></li>
+            <li class="tab"><a class="purple-text -darken-4" href="#set_orders">Set Orders</a></li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="favorites_tab">
+            <div class="row">
+            <div class="col s6 m6 l6">
+            <div class="card-title">Food</div>
+            <ul class="collection">
+              <li class="food_favorite collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="food_favorite_close secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="food_favorite collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="col s6 m6 l6">
+            <div class="card-title">Restaurants</div>
+            <ul class="collection">
+              <li class="food_favorite collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="food_favorite_close secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="food_favorite collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
+                <span class="title">Salmon Dish</span>
+                <p>The Fishnet <br> ₱249.00
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
+              </li>
+
+            </ul>
+          </div>
+          </div>
+        </div>
+          <div id="test5">Test 2</div>
+          <div id="set_orders">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card orange darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Card Title</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                  </div>
+                  <div class="card-action">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col s12 m6">
+                <div class="card orange darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Card Title</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                  </div>
+                  <div class="card-action">
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Right side-->
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal_food" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <h4>
+          Salmon Dish
+          <span class="badge green white-text">₱249.00</span>
+        </h4>
+      </div>
+      <div class="row">
+        <div class="col s7 food-image valign-wrapper">
+          <img class="card-image responsive-img" src="images/salmon-dish-food-meal-46239.jpeg">
+          <!-- <img class="card-image responsive-img" src="images/3.jpg">  -->
+          <!-- <img class="card-image responsive-img" src="images/LN7Ak.jpg"> -->
+        </div>
+        <div class="col s5" style="background-color: green">
+          <div class="row">
+            Testing
+          </div>
+          <div class="row">
+            Shit
+          </div>
+          <div class="row">
+            Out
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+  <!-- Modal for history of orders -->
+  <div id="modal_order_history" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <h4>
+          The Fishnet
+        </h4>
+        <table>
+           <thead>
+             <tr>
+                 <th></th>
+                 <th></th>
+                 <th></th>
+             </tr>
+           </thead>
+
+           <thead>
+             <tr>
+               <td class="purple-text">1x </td>
+               <td>Salmon Dish</td>
+               <td class="right-align">₱249.00</td>
+             </tr>
+             <tr>
+               <td class="purple-text">2x </td>
+               <td>Belly Buster Pizza</td>
+               <td class="right-align">₱2,700.00</td>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+                 <th></th>
+                 <th></th>
+                 <td class="right-align">₱2,949.00</td>
+             </tr>
+           </tbody>
+         </table>
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat">Dismiss</a>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      $('.food_favorite').not('.food_favorite_close').on('click', function () {
+        $('#modal_food').modal('open');
+      });
+      $('.food_favorite_close').on('click', function (e) {
+        alert('close');
+      });
+
+      $('.order_history').on('click', function(){
+        $('#modal_order_history').modal('open');
+      });
+
+      $('#btn-edit-about').on('click', function(){
+        //$('#about-text').attr('contenteditable',!$('#about-text').attr('contenteditable'));
+        if($('#btn-edit-about').html() == "edit"){
+          $('#about-text').attr('contenteditable','true');
+          $('#btn-edit-about').html('done');
+        }
+        else{
+          $('#about-text').attr('contenteditable','false');
+          $('#btn-edit-about').html('edit');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

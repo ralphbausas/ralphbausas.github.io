@@ -1,340 +1,390 @@
-<html>
 
-<head>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
 
-  <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+<style>
 
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+html, body {
+  font-size: 62.5%;
+}
+body {
+  background: #63BDF7;
+  overflow: hidden;
+}
 
-   <!-- Compiled and minified JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+$w: 30.6rem;
+$h: 54rem;
+$headerH: 6rem;
+$cardW: 24rem;
+$cardH: 32rem;
+$cardTopH: 20.5rem;
+$cardBtmH: $cardH - $cardTopH;
+$imgSize: 10rem;
 
-  <style>
-  ul.tabs > .indicator{
-    background-color: #d500f9;
+$purple: #7132B9;
+$blue: #248CB6;
+$indigo: #303F9F;
+$cyan: #26C6DA;
+$lime: #AFB42B;
+$brown: #795548;
+
+$orange: #FF945A;
+$green: #B1DA96;
+
+.demo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $w;
+  height: $h;
+  margin-left: $w/-2;
+  margin-top: $h/-2;
+  background: #F6F6F5;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+
+  &__header {
+    height: $headerH;
+    background: #002942;
   }
-  </style>
 
-</head>
+  &__content {
+    overflow: hidden;
+    position: relative;
+    height: $h - $headerH;
+    padding-top: 4.5rem;
+    user-select: none;
+  }
 
-<body class="grey lighten-3">
-  <nav>
-    <div class="nav-wrapper purple darken-1">
-      <a href="#" class="brand-logo left">Grubby</a>
-      <ul id="nav-mobile" class="right">
-        <li><a href="menu.html">Menu</a></li>
-        <!-- <li><a href="#" data-activates="slide-out" class="button-profile">User</a></li> -->
-      </ul>
-    </div>
-  </nav>
+  &__card-cont {
+    position: relative;
+    width: $cardW;
+    height: $cardH;
+    margin: 0 auto 5rem;
+  }
 
-  <div class="profile-container">
-    <div class="row">
-      <div class="col s12 m12">
-        <div class="card small">
-          <div class="card-image">
-            <img src="images/profile-banner.jpg" class="responsive-img">
-          </div>
-          <div class="card-content">
-            <div class="row">
-              <div class="col s2">
-                <img class="profile-avatar" src="images/profile.jpg">
-              </div>
-              <div class="col s3 text-left">
-                <h5>Ralph Bausas</h5>
-                <h6 class="grey-text">Professional Eater</h6>
-              </div>
-              <div class="col s2">
-                <h5>22</h5>
-                <h6 class="grey-text">Age</h6>
-              </div>
-              <div class="col s2">
-                <h5>1</h5>
-                <h6 class="grey-text">Favorites</h6>
-              </div>
-              <div class="col s3">
-                <h5>15</h5>
-                <h6 class="grey-text">Orders</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  &__card {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
 
-  <div class="row">
-    <!--Left side-->
-    <div class="col s12 m3">
-      <div class="card purple">
-        <div class="card-content white-text">
-          <span class="card-title">About me!</span><div class="right-align" style="cursor: pointer"><i id="btn-edit-about" class="tiny material-icons">edit</i></div>
-          <p id="about-text">I'm a simple man. I see food, I press heart.</p>
-        </div>
-      </div>
+    &.reset {
+      transition: transform 0.3s;
+      transform: translateX(0) !important;
 
-      <div class="card white darken-4">
-        <div class="card-content black-text">
-          <span class="card-title">Recent Orders</span>
-        </div>
-        <div class="row">
-          <div class="col s12 m12 l12">
-            <ul class="collection">
-              <li class="order_history collection-item avatar">
-                <i class="circle"><strong>F</strong></i>
-                <span class="title">The Fishnet</span>
-                <p>
-                  ₱2,949.00
-                </p>
-              </li>
-              <li class="order_history collection-item avatar">
-                <i class="circle"><strong>F</strong></i>
-                <span class="title">The Fishnet</span>
-                <p>
-                  ₱249.00
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Left side-->
+      .demo__card__choice {
+        transition: opacity 0.3s;
+        opacity: 0 !important;;
+      }
+    }
 
-    <!--Right side-->
-    <div class="col s12 m9">
-      <div class="card">
-        <!-- <div class="card-content">
-             <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-           </div> -->
-        <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a class="active purple-text -darken-4" href="#favorites_tab">Favorites</a></li>
-            <li class="tab"><a class="purple-text -darken-4" href="#test5">Test 2</a></li>
-            <li class="tab"><a class="purple-text -darken-4" href="#set_orders">Set Orders</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-4">
-          <div id="favorites_tab">
-            <div class="row">
-            <div class="col s6 m6 l6">
-            <div class="card-title">Food</div>
-            <ul class="collection">
-              <li class="food_favorite collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="food_favorite_close secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="food_favorite collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
+    &.inactive {
+      transition: transform 0.3s;
+    }
 
-            </ul>
-          </div>
-          <div class="col s6 m6 l6">
-            <div class="card-title">Restaurants</div>
-            <ul class="collection">
-              <li class="food_favorite collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="food_favorite_close secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="food_favorite collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <img src="images/salmon-dish-food-meal-46239.jpeg" alt="" class="circle">
-                <span class="title">Salmon Dish</span>
-                <p>The Fishnet <br> ₱249.00
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">local_dining</i></a>
-              </li>
+    &.to-left {
+      transform: translateX(-30rem) rotate(-30deg) !important;
+    }
 
-            </ul>
-          </div>
-          </div>
-        </div>
-          <div id="test5">Test 2</div>
-          <div id="set_orders">
-            <div class="row">
-              <div class="col s12 m6">
-                <div class="card orange darken-1">
-                  <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                  </div>
-                  <div class="card-action">
+    &.to-right {
+      transform: translate(30rem) rotate(30deg) !important;
+    }
 
-                  </div>
-                </div>
-              </div>
+    &.below {
+      z-index: 1;
+    }
 
-              <div class="col s12 m6">
-                <div class="card orange darken-1">
-                  <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                  </div>
-                  <div class="card-action">
+    &__top {
+      height: $cardTopH;
+      padding-top: 4rem;
 
-                  </div>
-                </div>
-              </div>
+      &.purple {
+        background: $purple;
+      }
+      &.blue {
+        background: $blue;
+      }
+      &.indigo {
+        background: $indigo;
+      }
+      &.cyan {
+        background: $cyan;
+      }
+      &.lime {
+        background: $lime;
+      }
+      &.brown {
+        background: $brown;
+      }
+    }
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Right side-->
-  </div>
+    &__img {
+      overflow: hidden;
+      width: $imgSize;
+      height: $imgSize;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      border: 0.5rem solid #ffffff;
+      background-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg');
+      background-size: cover;
+    }
 
-  <!-- Modal Structure -->
-  <div id="modal_food" class="modal">
-    <div class="modal-content">
-      <div class="row">
-        <h4>
-          Salmon Dish
-          <span class="badge green white-text">₱249.00</span>
-        </h4>
-      </div>
-      <div class="row">
-        <div class="col s7 food-image valign-wrapper">
-          <img class="card-image responsive-img" src="images/salmon-dish-food-meal-46239.jpeg">
-          <!-- <img class="card-image responsive-img" src="images/3.jpg">  -->
-          <!-- <img class="card-image responsive-img" src="images/LN7Ak.jpg"> -->
-        </div>
-        <div class="col s5" style="background-color: green">
-          <div class="row">
-            Testing
-          </div>
-          <div class="row">
-            Shit
-          </div>
-          <div class="row">
-            Out
-          </div>
-        </div>
-      </div>
+    &__name {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+    }
 
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+    &__btm {
+      height: $cardBtmH;
+      background: #FFFFFF;
+    }
 
-  <!-- Modal for history of orders -->
-  <div id="modal_order_history" class="modal">
-    <div class="modal-content">
-      <div class="row">
-        <h4>
-          The Fishnet
-        </h4>
-        <table>
-           <thead>
-             <tr>
-                 <th></th>
-                 <th></th>
-                 <th></th>
-             </tr>
-           </thead>
+    &__we {
+      text-align: center;
+      font-size: 2.2rem;
+      line-height: $cardBtmH;
+    }
 
-           <thead>
-             <tr>
-               <td class="purple-text">1x </td>
-               <td>Salmon Dish</td>
-               <td class="right-align">₱249.00</td>
-             </tr>
-             <tr>
-               <td class="purple-text">2x </td>
-               <td>Belly Buster Pizza</td>
-               <td class="right-align">₱2,700.00</td>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-                 <th></th>
-                 <th></th>
-                 <td class="right-align">₱2,949.00</td>
-             </tr>
-           </tbody>
-         </table>
-      </div>
+    &__choice {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
 
+      &:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 2rem;
+        height: 2rem;
+        margin-left: -1rem;
+        color: #fff;
+        border-radius: 50%;
+        box-shadow: -2rem -3rem #fff, 2rem -3rem #fff;
+      }
 
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat">Dismiss</a>
-    </div>
-  </div>
+      &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 4rem;
+        height: 1.5rem;
+        margin-left: -2rem;
+        border: 0.6rem solid #fff;
+        border-bottom: none;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+      }
 
-  <script>
-    $(function () {
-      $('.food_favorite').not('.food_favorite_close').on('click', function () {
-        $('#modal_food').modal('open');
-      });
-      $('.food_favorite_close').on('click', function (e) {
-        alert('close');
-      });
+      &.m--reject {
+        background: $orange;
+      }
+      &.m--like {
+        background: $green;
 
-      $('.order_history').on('click', function(){
-        $('#modal_order_history').modal('open');
-      });
-
-      $('#btn-edit-about').on('click', function(){
-        //$('#about-text').attr('contenteditable',!$('#about-text').attr('contenteditable'));
-        if($('#btn-edit-about').html() == "edit"){
-          $('#about-text').attr('contenteditable','true');
-          $('#btn-edit-about').html('done');
+        &:after {
+          transform: scaleY(-1);
         }
-        else{
-          $('#about-text').attr('contenteditable','false');
-          $('#btn-edit-about').html('edit');
+      }
+    }
+
+    &__drag {
+      z-index: 5;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+  }
+
+  &__tip {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+}
+
+
+
+</style>
+
+<div class="demo">
+  <header class="demo__header"></header>
+  <div class="demo__content">
+    <div class="demo__card-cont">
+      <div class="demo__card">
+        <div class="demo__card__top brown">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat 6</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+      <div class="demo__card">
+        <div class="demo__card__top lime">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat 5</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+      <div class="demo__card">
+        <div class="demo__card__top cyan">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat 4</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+      <div class="demo__card">
+        <div class="demo__card__top indigo">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat 3</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+      <div class="demo__card">
+        <div class="demo__card__top blue">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat 2</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+      <div class="demo__card">
+        <div class="demo__card__top purple">
+          <div class="demo__card__img"></div>
+          <p class="demo__card__name">Hungry cat</p>
+        </div>
+        <div class="demo__card__btm">
+          <p class="demo__card__we">Whatever</p>
+        </div>
+        <div class="demo__card__choice m--reject"></div>
+        <div class="demo__card__choice m--like"></div>
+        <div class="demo__card__drag"></div>
+      </div>
+    </div>
+    <p class="demo__tip">Swipe left or right</p>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+  var animating = false;
+  var cardsCounter = 0;
+  var numOfCards = 6;
+  var decisionVal = 80;
+  var pullDeltaX = 0;
+  var deg = 0;
+  var $card, $cardReject, $cardLike;
+
+  function pullChange() {
+    animating = true;
+    deg = pullDeltaX / 10;
+    $card.css("transform", "translateX("+ pullDeltaX +"px) rotate("+ deg +"deg)");
+
+    var opacity = pullDeltaX / 100;
+    var rejectOpacity = (opacity >= 0) ? 0 : Math.abs(opacity);
+    var likeOpacity = (opacity <= 0) ? 0 : opacity;
+    $cardReject.css("opacity", rejectOpacity);
+    $cardLike.css("opacity", likeOpacity);
+  };
+
+  function release() {
+
+    if (pullDeltaX >= decisionVal) {
+      $card.addClass("to-right");
+    } else if (pullDeltaX <= -decisionVal) {
+      $card.addClass("to-left");
+    }
+
+    if (Math.abs(pullDeltaX) >= decisionVal) {
+      $card.addClass("inactive");
+
+      setTimeout(function() {
+        $card.addClass("below").removeClass("inactive to-left to-right");
+        cardsCounter++;
+        if (cardsCounter === numOfCards) {
+          cardsCounter = 0;
+          $(".demo__card").removeClass("below");
         }
-      });
+      }, 300);
+    }
+
+    if (Math.abs(pullDeltaX) < decisionVal) {
+      $card.addClass("reset");
+    }
+
+    setTimeout(function() {
+      $card.attr("style", "").removeClass("reset")
+        .find(".demo__card__choice").attr("style", "");
+
+      pullDeltaX = 0;
+      animating = false;
+    }, 300);
+  };
+
+  $(document).on("mousedown touchstart", ".demo__card:not(.inactive)", function(e) {
+    if (animating) return;
+
+    $card = $(this);
+    $cardReject = $(".demo__card__choice.m--reject", $card);
+    $cardLike = $(".demo__card__choice.m--like", $card);
+    var startX =  e.pageX || e.originalEvent.touches[0].pageX;
+
+    $(document).on("mousemove touchmove", function(e) {
+      var x = e.pageX || e.originalEvent.touches[0].pageX;
+      pullDeltaX = (x - startX);
+      if (!pullDeltaX) return;
+      pullChange();
     });
-  </script>
-</body>
 
-</html>
+    $(document).on("mouseup touchend", function() {
+      $(document).off("mousemove touchmove mouseup touchend");
+      if (!pullDeltaX) return; // prevents from rapid click events
+      release();
+    });
+  });
+
+});
+</script>
